@@ -1,12 +1,6 @@
 #!/bin/bash
 #
 
-sdptool add SP
-rfcomm watch 0 1 &
-while true
-do
-  if [ -c /dev/rfcomm0 ]
-  then
-  	getty -L rfcomm0 115200 vt220
-  fi
-done
+sdptool add SP &> /dev/null
+rfcomm watch 0 1 &> /dev/null
+getty -L rfcomm0 115200 vt220 &
